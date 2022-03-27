@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class productModel extends CI_Model
+class Productmodel extends CI_Model
 {
 
         public function getAllProducts()
