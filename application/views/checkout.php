@@ -16,12 +16,14 @@
 		      </thead>
 
 		      <tbody>
+						<form action="<?php echo base_url('products/checkout'); ?>" method="post">
 		        <?php if (!empty($this->cart->contents())) : ?>
 		          <?php foreach ($this->cart->contents() as $record) : ?>
 
 		            <tr class="text-center bg-light">
 		              <th><img height="70px" src="<?= base_url('assets/img/') . $record['image']; ?>"></th>
 		              <td><?= $record['name']; ?></td>
+									<input type="hidden" name="product_name" value="<?= $record['name']; ?>">
 		              <td>$ <?= $record['price']; ?></td>
 		              <td><?php echo $record['qty']; ?></td>		              
 		              <td>$ <?= $record['subtotal']; ?></td>
@@ -33,6 +35,7 @@
 		        <tr>
 		          <td colspan="4"></td>
 		          <td colspan="2">Grand Total: $ <?= $this->cart->format_number($this->cart->total()); ?></td>
+							<input type="hidden" name="pricetopay" value="<?= $this->cart->format_number($this->cart->total()); ?>">
 		        </tr>
 		      </tbody>
 
@@ -42,7 +45,7 @@
 
 		<div class="col-md-4">
 			<h3>Shipping Info</h3>
-			<form action="<?php echo base_url('products/checkout'); ?>" method="post">
+			
 				<div class="card border-primary mt-3">
 				  <div class="card-body">
 				    <form>

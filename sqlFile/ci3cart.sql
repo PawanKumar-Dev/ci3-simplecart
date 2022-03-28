@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2022 at 07:58 AM
+-- Generation Time: Mar 25, 2022 at 08:23 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -43,7 +43,38 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `name`, `email`, `phone`, `address`, `created`, `modified`, `status`) VALUES
-(16, 'Pawan Kumar', 'pk687376@gmail.com', '08882608794', 'Shahbad dairy Delhi 110042, F-4, Shahbad Dairy', '20-03-2022 07:56:18', '20-03-2022 07:56:18', '1');
+(20, 'Pawan Kumar', 'pk687376@gmail.com', '08882608794', 'Shahbad dairy Delhi 110042, F-4, Shahbad Dairy', '24-03-2022 07:54:12', '24-03-2022 07:54:12', '1'),
+(21, 'Pawan Kumar', 'pk687376@gmail.com', '08882608794', 'Shahbad dairy Delhi 110042, F-4, Shahbad Dairy', '24-03-2022 07:56:04', '24-03-2022 07:56:04', '1'),
+(22, 'Pawan Kumar', 'pk687376@gmail.com', '08882608794', 'Shahbad dairy Delhi 110042, F-4, Shahbad Dairy', '24-03-2022 08:11:41', '24-03-2022 08:11:41', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `instamojo`
+--
+
+CREATE TABLE `instamojo` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `phone` varchar(25) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `buyer_name` varchar(255) DEFAULT NULL,
+  `amount` decimal(16,2) NOT NULL,
+  `purpose` text DEFAULT NULL,
+  `expires_at` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `send_sms` varchar(5) NOT NULL DEFAULT 'false',
+  `send_email` varchar(5) NOT NULL DEFAULT 'false',
+  `sms_status` varchar(255) DEFAULT NULL,
+  `email_status` varchar(255) DEFAULT NULL,
+  `shorturl` mediumtext DEFAULT NULL,
+  `longurl` mediumtext DEFAULT NULL,
+  `redirect_url` mediumtext DEFAULT NULL,
+  `webhook` mediumtext DEFAULT NULL,
+  `allow_repeated_payments` varchar(5) NOT NULL DEFAULT 'false',
+  `customer_id` varchar(255) DEFAULT NULL,
+  `created_at` varchar(255) DEFAULT NULL,
+  `modified_at` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -65,7 +96,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `customer_id`, `grand_total`, `created`, `modified`, `status`) VALUES
-(13, 16, 162.56, '20-03-2022 07:56:18', '20-03-2022 07:56:18', '1');
+(17, 20, 70, '24-03-2022 07:54:12', '24-03-2022 07:54:12', '1'),
+(18, 21, 70, '24-03-2022 07:56:04', '24-03-2022 07:56:04', '1'),
+(19, 22, 210, '24-03-2022 08:11:41', '24-03-2022 08:11:41', '1');
 
 -- --------------------------------------------------------
 
@@ -86,8 +119,9 @@ CREATE TABLE `order_items` (
 --
 
 INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `quantity`, `sub_total`) VALUES
-(5, 13, 6, 1, 70),
-(6, 13, 5, 1, 92.56);
+(10, 17, 6, 1, 70),
+(11, 18, 6, 1, 70),
+(12, 19, 6, 3, 210);
 
 -- --------------------------------------------------------
 
@@ -126,6 +160,12 @@ ALTER TABLE `customers`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `instamojo`
+--
+ALTER TABLE `instamojo`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
@@ -151,19 +191,25 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `instamojo`
+--
+ALTER TABLE `instamojo`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `products`
