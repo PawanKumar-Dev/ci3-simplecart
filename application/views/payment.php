@@ -1,6 +1,6 @@
 <?php include 'header.php'; ?>
-<div class="container mt-3">
 
+<div class="container mt-3">
   <div class="row">
     <table class="table table-light table-sm">
       <thead>
